@@ -1,0 +1,13 @@
+com/zectia/communities_microservice/model/CommunityRoles.class
+com/zectia/communities_microservice/dto/CommunityDto.class
+com/zectia/communities_microservice/exception/ResourceNotFoundException.class
+com/zectia/communities_microservice/dto/CommunityRolesDto.class
+com/zectia/communities_microservice/repository/CommunityRepository.class
+com/zectia/communities_microservice/service/impl/CommunityServiceImpl.class
+com/zectia/communities_microservice/CommunitiesMicroserviceApplication.class
+com/zectia/communities_microservice/model/UserCommunity.class
+com/zectia/communities_microservice/controller/CommunityController.class
+com/zectia/communities_microservice/dto/UserCommunityDto.class
+com/zectia/communities_microservice/service/CommunityService.class
+com/zectia/communities_microservice/config/CorsConfig.class
+com/zectia/communities_microservice/model/Community.class

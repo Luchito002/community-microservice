@@ -1,0 +1,13 @@
+/mnt/c/users/luis/Desktop/zectia/communities-microservice/src/main/java/com/zectia/communities_microservice/CommunitiesMicroserviceApplication.java
+/mnt/c/users/luis/Desktop/zectia/communities-microservice/src/main/java/com/zectia/communities_microservice/config/CorsConfig.java
+/mnt/c/users/luis/Desktop/zectia/communities-microservice/src/main/java/com/zectia/communities_microservice/controller/CommunityController.java
+/mnt/c/users/luis/Desktop/zectia/communities-microservice/src/main/java/com/zectia/communities_microservice/dto/CommunityDto.java
+/mnt/c/users/luis/Desktop/zectia/communities-microservice/src/main/java/com/zectia/communities_microservice/dto/CommunityRolesDto.java
+/mnt/c/users/luis/Desktop/zectia/communities-microservice/src/main/java/com/zectia/communities_microservice/dto/UserCommunityDto.java
+/mnt/c/users/luis/Desktop/zectia/communities-microservice/src/main/java/com/zectia/communities_microservice/exception/ResourceNotFoundException.java
+/mnt/c/users/luis/Desktop/zectia/communities-microservice/src/main/java/com/zectia/communities_microservice/model/Community.java
+/mnt/c/users/luis/Desktop/zectia/communities-microservice/src/main/java/com/zectia/communities_microservice/model/CommunityRoles.java
+/mnt/c/users/luis/Desktop/zectia/communities-microservice/src/main/java/com/zectia/communities_microservice/model/UserCommunity.java
+/mnt/c/users/luis/Desktop/zectia/communities-microservice/src/main/java/com/zectia/communities_microservice/repository/CommunityRepository.java
+/mnt/c/users/luis/Desktop/zectia/communities-microservice/src/main/java/com/zectia/communities_microservice/service/CommunityService.java
+/mnt/c/users/luis/Desktop/zectia/communities-microservice/src/main/java/com/zectia/communities_microservice/service/impl/CommunityServiceImpl.java
