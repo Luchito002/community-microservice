@@ -6,9 +6,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.FetchType;
 
 @Entity
 @Table(name = "roles_comunidad")
@@ -17,17 +14,12 @@ public class CommunityRoles {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "usuario_comunidad_id", nullable = false)
-    private UserCommunity usuarioComunidad;
-
     @Column(name = "nombre", nullable = false, length = 20)
     private String nombre;
 
     public CommunityRoles() {}
 
-    public CommunityRoles(UserCommunity usuarioComunidad, String nombre) {
-        this.usuarioComunidad = usuarioComunidad;
+    public CommunityRoles(String nombre) {
         this.nombre = nombre;
     }
 
@@ -38,14 +30,6 @@ public class CommunityRoles {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public UserCommunity getUsuarioComunidad() {
-        return usuarioComunidad;
-    }
-
-    public void setUsuarioComunidad(UserCommunity usuarioComunidad) {
-        this.usuarioComunidad = usuarioComunidad;
     }
 
     public String getNombre() {

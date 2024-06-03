@@ -2,14 +2,12 @@ package com.zectia.communities_microservice.dto;
 
 public class CommunityRolesDto {
     private Long id;
-    private Long usuarioComunidadId;
     private String nombre;
 
     public CommunityRolesDto() {}
 
-    public CommunityRolesDto(Long id, Long usuarioComunidadId, String nombre) {
+    public CommunityRolesDto(Long id, String nombre) {
         this.id = id;
-        this.usuarioComunidadId = usuarioComunidadId;
         this.nombre = nombre;
     }
 
@@ -20,14 +18,6 @@ public class CommunityRolesDto {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getUsuarioComunidadId() {
-        return usuarioComunidadId;
-    }
-
-    public void setUsuarioComunidadId(Long usuarioComunidadId) {
-        this.usuarioComunidadId = usuarioComunidadId;
     }
 
     public String getNombre() {
