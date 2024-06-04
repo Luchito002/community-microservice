@@ -1,5 +1,6 @@
 package com.zectia.communities_microservice.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,5 +23,4 @@ public class UserCommunityController {
   public UserCommunityDto joinCommunity(UserCommunityDto userCommunityDto) {
     return this.userCommunityService.joinCommunity(userCommunityDto);
   }
-
 }

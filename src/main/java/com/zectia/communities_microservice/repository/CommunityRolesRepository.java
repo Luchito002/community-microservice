@@ -9,4 +9,6 @@ import java.util.Optional;
 @Repository
 public interface CommunityRolesRepository extends JpaRepository<CommunityRoles, Long> {
   Optional<CommunityRoles> findById(Long id);
+
+
 }

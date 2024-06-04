@@ -1,6 +1,10 @@
 package com.zectia.communities_microservice.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +25,11 @@ public class CommunityController {
   @PostMapping("crearcomunidad")
   public CommunityDto createCommunity(CommunityDto communityDto) {
     return this.communityService.createCommunity(communityDto);
+  }
+
+  @GetMapping("obtener-comunidades/{id}")
+  public List<CommunityDto> getCommunities(@PathVariable Long id) {
+    return this.communityService.getCommunities(id);
   }
 
 }

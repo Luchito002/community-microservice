@@ -22,10 +22,9 @@ public class UserCommunityServiceImpl implements UserCommunityService {
 
   @Autowired
   public UserCommunityServiceImpl(
-    UserCommunityRepository userCommunityRepository,
-    CommunityRepository communityRepository,
-    CommunityRolesRepository communityRolesRepository
-  ) {
+      UserCommunityRepository userCommunityRepository,
+      CommunityRepository communityRepository,
+      CommunityRolesRepository communityRolesRepository) {
     this.userCommunityRepository = userCommunityRepository;
     this.communityRepository = communityRepository;
     this.communityRolesRepository = communityRolesRepository;
@@ -37,12 +36,12 @@ public class UserCommunityServiceImpl implements UserCommunityService {
 
     // Obtener y Establecer la comunidad a la que el usuario se está uniendo
     Community comunidad = communityRepository.findById(userCommunityDto.getComunidadId())
-        .orElseThrow(() -> new ResourceNotFoundException(userCommunityDto.getComunidadId()));
+        .orElseThrow(() -> new ResourceNotFoundException("Ya estas unido en esta comunidad"));
     userCommunity.setComunidad(comunidad);
 
     // Obtener y Establecer el rol de comunidad a la que el usuario se está uniendo
     CommunityRoles communityRol = communityRolesRepository.findById(userCommunityDto.getRolesComunidadId())
-        .orElseThrow(() -> new ResourceNotFoundException(userCommunityDto.getRolesComunidadId()));
+        .orElseThrow(() -> new ResourceNotFoundException("No existe ese rol"));
     userCommunity.setRolesComunidad(communityRol);
 
     // Guardar la entidad UserCommunity
