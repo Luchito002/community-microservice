@@ -22,7 +22,8 @@ public class CommunityServiceImpl implements CommunityService {
   private final UserCommunityRepository userCommunityRepository;
 
   @Autowired
-  public CommunityServiceImpl(CommunityRepository communityRepository, UserCommunityRepository userCommunityRepository) {
+  public CommunityServiceImpl(CommunityRepository communityRepository,
+      UserCommunityRepository userCommunityRepository) {
     this.communityRepository = communityRepository;
     this.userCommunityRepository = userCommunityRepository;
   }
@@ -35,12 +36,30 @@ public class CommunityServiceImpl implements CommunityService {
   }
 
   @Override
-  public List<CommunityDto> getCommunities(Long userId) {
+  public List<Community> getCommunities() {
+    List<Community> comunidadesSinUsuarioComunidades = communityRepository.findAll();
+
+    // Recorrer cada comunidad y eliminar el campo usuarioComunidades
+    for (Community comunidad : comunidadesSinUsuarioComunidades) {
+      comunidad.setUsuarioComunidades(null);
+    }
+
+    // Devolver la lista de comunidades modificada
+    return comunidadesSinUsuarioComunidades;
+  }
+
+  @Override
+  public List<CommunityDto> getCommunitiesByUserId(Long userId) {
     List<UserCommunity> userCommunities = userCommunityRepository.findByIdUsuario(userId);
 
     return userCommunities.stream()
         .map(UserCommunity::getComunidad)
         .map(CommunityDto::new)
         .collect(Collectors.toList());
+  }
+
+  @Override
+  public String leftCommunity(Long userId, Long communityId) {
+    return "TODO UUuuuuuuuuuuuuuuuu";
   }
 }

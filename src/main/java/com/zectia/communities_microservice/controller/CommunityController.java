@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zectia.communities_microservice.dto.CommunityDto;
+import com.zectia.communities_microservice.model.Community;
 import com.zectia.communities_microservice.service.CommunityService;
 
 @RestController
@@ -27,9 +28,15 @@ public class CommunityController {
     return this.communityService.createCommunity(communityDto);
   }
 
-  @GetMapping("obtener-comunidades/{id}")
-  public List<CommunityDto> getCommunities(@PathVariable Long id) {
-    return this.communityService.getCommunities(id);
+
+  @GetMapping("obtener-comunidades")
+  public List<Community> getCommunities() {
+    return this.communityService.getCommunities();
+  }
+
+  @GetMapping("obtener-comunidades-por-usuario-id/{id}")
+  public List<CommunityDto> getCommunitiesByUserId(@PathVariable Long id) {
+    return this.communityService.getCommunitiesByUserId(id);
   }
 
 }
