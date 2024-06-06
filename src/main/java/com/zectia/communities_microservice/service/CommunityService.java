@@ -6,11 +6,9 @@ import com.zectia.communities_microservice.dto.CommunityDto;
 import com.zectia.communities_microservice.model.Community;
 
 public interface CommunityService {
-  CommunityDto createCommunity(CommunityDto communityDto);
+  String createCommunity(CommunityDto communityDto);
 
   List<Community> getCommunities();
 
   List<CommunityDto> getCommunitiesByUserId(Long userId);
-
-  String makeCommunityPrivate(Long communityId);
 }

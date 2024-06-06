@@ -22,17 +22,32 @@ public class UserCommunityController {
   }
 
   @PostMapping("unir")
-  public UserCommunityDto joinCommunity(UserCommunityDto userCommunityDto) {
+  public String joinCommunity(UserCommunityDto userCommunityDto) {
     return this.userCommunityService.joinCommunity(userCommunityDto);
   }
 
-  @PutMapping("salir")
-  public String leaveCommunity(@RequestParam Long userId, @RequestParam Long communityId) {
-    return this.userCommunityService.leaveCommunity(userId, communityId);
+  @PutMapping("salir/{usuarioId}/{comunidadId}/{nuevoUsuarioAdminId}")
+  public String leaveCommunity(@RequestParam Long userId, @RequestParam Long communityId, @RequestParam(required = false) Long newUserAdminId) {
+    return this.userCommunityService.leaveCommunity(userId, communityId, newUserAdminId);
   }
 
   @PutMapping("banear")
   public String banUserFromCommunity(@RequestParam Long userId, @RequestParam Long communityId) {
     return this.userCommunityService.banUserFromCommunity(userId, communityId);
+  }
+
+  @PutMapping("cambiar-rol-usuario/{adminId}/{comunidadId}/{nuevoRolParaUsuarioId}/{rolId}")
+  public String changeUserRolCommunity(Long userAdminId, Long communityId, Long newRolForUserId, Long rolId) {
+    return this.userCommunityService.changeUserRolCommunity(userAdminId, communityId, newRolForUserId, rolId);
+  }
+
+  @PutMapping("cambiar-visibilidad-comunidad-privado/{usuarioAdminId}/{comunidadId}")
+  public String makeCommunityPrivate(Long userAdminId, Long communityId) {
+    return this.userCommunityService.makeCommunityPrivate(userAdminId, communityId);
+  }
+
+  @PutMapping("cambiar-visibilidad-comunidad-publico/{usuarioAdminId}/{comunidadId}")
+  public String makeCommunityPublic(Long userAdminId, Long communityId) {
+    return this.userCommunityService.makeCommunityPublic(userAdminId, communityId);
   }
 }

@@ -14,4 +14,6 @@ public interface CommunityRepository extends JpaRepository<Community, Long> {
   Optional<Community> findById(Long id);
 
   List<UserCommunity> findAllById(Long id);
+
+  boolean existsByNombre(String nombre);
 }

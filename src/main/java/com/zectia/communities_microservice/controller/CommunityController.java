@@ -25,7 +25,7 @@ public class CommunityController {
   }
 
   @PostMapping("crearcomunidad")
-  public CommunityDto createCommunity(CommunityDto communityDto) {
+  public String createCommunity(CommunityDto communityDto) {
     return this.communityService.createCommunity(communityDto);
   }
 
@@ -38,10 +38,5 @@ public class CommunityController {
   @GetMapping("obtener-comunidades-por-usuario-id/{id}")
   public List<CommunityDto> getCommunitiesByUserId(@PathVariable Long id) {
     return this.communityService.getCommunitiesByUserId(id);
-  }
-
-  @PutMapping("cambiar-comunidad-a-privado/{communityId}")
-  public String makeCommunityPrivate(@PathVariable Long communityId) {
-    return this.communityService.makeCommunityPrivate(communityId);
   }
 }

@@ -29,10 +29,13 @@ public class CommunityServiceImpl implements CommunityService {
   }
 
   @Override
-  public CommunityDto createCommunity(CommunityDto communityDto) {
+  public String createCommunity(CommunityDto communityDto) {
     Community community = DtoEntityConverter.dtoToEntity(communityDto, Community.class);
-    Community insertedCommunity = this.communityRepository.save(community);
-    return new CommunityDto(insertedCommunity);
+    if (communityRepository.existsByNombre(community.getNombre())) {
+      return "Ya existe una comunidad con ese nombre";
+    }
+    this.communityRepository.save(community);
+    return "Comunidad creada con exito";
   }
 
   @Override
@@ -56,10 +59,5 @@ public class CommunityServiceImpl implements CommunityService {
         .map(UserCommunity::getComunidad)
         .map(CommunityDto::new)
         .collect(Collectors.toList());
-  }
-
-  @Override
-  public String makeCommunityPrivate(Long communityId) {
-    return "La comunidad se actualizo a privado exitosamente";
   }
 }
