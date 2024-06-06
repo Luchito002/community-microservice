@@ -1,7 +1,10 @@
 package com.zectia.communities_microservice.controller;
 
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +30,8 @@ public class UserCommunityController {
   }
 
   @PutMapping("salir/{usuarioId}/{comunidadId}/{nuevoUsuarioAdminId}")
-  public String leaveCommunity(@RequestParam Long userId, @RequestParam Long communityId, @RequestParam(required = false) Long newUserAdminId) {
+  public String leaveCommunity(@RequestParam Long userId, @RequestParam Long communityId,
+      @RequestParam(required = false) Long newUserAdminId) {
     return this.userCommunityService.leaveCommunity(userId, communityId, newUserAdminId);
   }
 
@@ -49,5 +53,10 @@ public class UserCommunityController {
   @PutMapping("cambiar-visibilidad-comunidad-publico/{usuarioAdminId}/{comunidadId}")
   public String makeCommunityPublic(Long userAdminId, Long communityId) {
     return this.userCommunityService.makeCommunityPublic(userAdminId, communityId);
+  }
+
+  @GetMapping("obtener-usuarios-de-comunidad/{comunidadId}")
+  public List<?> getUsersFromCommunity(@PathVariable Long comunidadId) {
+    return this.userCommunityService.getUsersFromCommunity(comunidadId);
   }
 }

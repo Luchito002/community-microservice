@@ -1,4 +1,5 @@
 /mnt/c/users/luis/Desktop/zectia/communities-microservice/src/main/java/com/zectia/communities_microservice/CommunitiesMicroserviceApplication.java
+/mnt/c/users/luis/Desktop/zectia/communities-microservice/src/main/java/com/zectia/communities_microservice/config/AppConfig.java
 /mnt/c/users/luis/Desktop/zectia/communities-microservice/src/main/java/com/zectia/communities_microservice/config/CorsConfig.java
 /mnt/c/users/luis/Desktop/zectia/communities-microservice/src/main/java/com/zectia/communities_microservice/controller/CommunityController.java
 /mnt/c/users/luis/Desktop/zectia/communities-microservice/src/main/java/com/zectia/communities_microservice/controller/CommunityRolesController.java

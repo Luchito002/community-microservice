@@ -1,6 +1,9 @@
 package com.zectia.communities_microservice.service;
 
+import java.util.List;
+
 import com.zectia.communities_microservice.dto.UserCommunityDto;
+
 
 public interface UserCommunityService {
   String joinCommunity(UserCommunityDto UserCommunityDto);
@@ -14,4 +17,6 @@ public interface UserCommunityService {
   String makeCommunityPrivate(Long userAdminId, Long communityId);
 
   String makeCommunityPublic(Long userAdminId, Long communityId);
+
+  List<?>  getUsersFromCommunity(Long communityId);
 }

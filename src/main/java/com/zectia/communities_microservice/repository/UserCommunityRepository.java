@@ -1,6 +1,5 @@
 package com.zectia.communities_microservice.repository;
 
-
 import com.zectia.communities_microservice.model.UserCommunity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -15,4 +14,6 @@ public interface UserCommunityRepository extends JpaRepository<UserCommunity, Lo
   List<UserCommunity> findByIdUsuario(Long id);
 
   Optional<UserCommunity> findByIdUsuarioAndComunidadId(Long idUsuario, Long comunidadId);
+
+  List<UserCommunity> findByComunidadId(Long communityId);
 }

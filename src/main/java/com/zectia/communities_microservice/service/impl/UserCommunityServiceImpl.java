@@ -1,7 +1,17 @@
 package com.zectia.communities_microservice.service.impl;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
 import com.zectia.communities_microservice.dto.UserCommunityDto;
 import com.zectia.communities_microservice.exception.ResourceNotFoundException;
 import com.zectia.communities_microservice.model.UserCommunity;
@@ -20,14 +30,19 @@ public class UserCommunityServiceImpl implements UserCommunityService {
   private final CommunityRepository communityRepository;
   private final CommunityRolesRepository communityRolesRepository;
 
+  private final RestTemplate restTemplate;
+  private static final String USER_SERVICE_URL = "https://user-microservice-jq4a.onrender.com/usuarios/";
+
   @Autowired
   public UserCommunityServiceImpl(
       UserCommunityRepository userCommunityRepository,
       CommunityRepository communityRepository,
-      CommunityRolesRepository communityRolesRepository) {
+      CommunityRolesRepository communityRolesRepository,
+      RestTemplate restTemplate) {
     this.userCommunityRepository = userCommunityRepository;
     this.communityRepository = communityRepository;
     this.communityRolesRepository = communityRolesRepository;
+    this.restTemplate = restTemplate;
   }
 
   public String joinCommunity(UserCommunityDto userCommunityDto) {
@@ -206,5 +221,31 @@ public class UserCommunityServiceImpl implements UserCommunityService {
     communityRepository.save(community);
 
     return "La visibilidad de la comunidad se actualizó a 'Pública' exitosamente";
+  }
+
+  @Override
+  public List<?> getUsersFromCommunity(Long communityId) {
+    List<UserCommunity> userCommunities = userCommunityRepository.findByComunidadId(communityId);
+
+    List<Long> usersIds = userCommunities.stream()
+        .map(UserCommunity::getIdUsuario)
+        .collect(Collectors.toList());
+
+
+    String url = USER_SERVICE_URL + "obtener-usuarios-por-ids";
+
+    // Configurar los encabezados de la solicitud
+    HttpHeaders headers = new HttpHeaders();
+    headers.setContentType(MediaType.APPLICATION_JSON);
+
+    // Crear el cuerpo de la solicitud con la lista de IDs de usuarios
+    HttpEntity<List<Long>> requestEntity = new HttpEntity<>(usersIds, headers);
+
+    // Realizar la solicitud POST y obtener la respuesta
+    ResponseEntity<Object[]> response = restTemplate.postForEntity(url, requestEntity, Object[].class);
+
+    Object[] users = response.getBody();
+
+    return Arrays.asList(users);
   }
 }
