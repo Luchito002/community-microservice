@@ -12,5 +12,5 @@ public interface CommunityService {
 
   List<CommunityDto> getCommunitiesByUserId(Long userId);
 
-  String leftCommunity(Long userId, Long communityId);
+  String makeCommunityPrivate(Long communityId);
 }

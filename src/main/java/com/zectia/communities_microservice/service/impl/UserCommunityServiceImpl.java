@@ -50,4 +50,36 @@ public class UserCommunityServiceImpl implements UserCommunityService {
     // Convertir la entidad guardada a un DTO y devolverlo
     return DtoEntityConverter.entityToDto(insertedUserCommunity, UserCommunityDto.class);
   }
+
+  @Override
+  public String leaveCommunity(Long userId, Long communityId) {
+    // Buscar la relación UserCommunity correspondiente al usuario y la comunidad
+    UserCommunity userCommunity = userCommunityRepository.findByIdUsuarioAndComunidadId(userId, communityId)
+        .orElseThrow(() -> new ResourceNotFoundException("No se encontró la relación del usuario con la comunidad"));
+
+    // Cambiar el estado a "inactivo"
+    userCommunity.setEstado("inactivo");
+
+    // Guardar la entidad UserCommunity actualizada
+    userCommunityRepository.save(userCommunity);
+
+    // Convertir la entidad actualizada a un DTO y devolverlo
+    return "Saliste del grupo exitosamente";
+  }
+
+  @Override
+  public String banUserFromCommunity(Long userId, Long communityId) {
+    // Buscar la relación UserCommunity correspondiente al usuario y la comunidad
+    UserCommunity userCommunity = userCommunityRepository.findByIdUsuarioAndComunidadId(userId, communityId)
+        .orElseThrow(() -> new ResourceNotFoundException("No se encontró la relación del usuario con la comunidad"));
+
+    // Cambiar el estado a "inactivo"
+    userCommunity.setEstado("baneado");
+
+    // Guardar la entidad UserCommunity actualizada
+    userCommunityRepository.save(userCommunity);
+
+    // Convertir la entidad actualizada a un DTO y devolverlo
+    return "Se baneo al usuario exitosamente";
+  }
 }

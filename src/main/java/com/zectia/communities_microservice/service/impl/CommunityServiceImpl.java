@@ -59,7 +59,7 @@ public class CommunityServiceImpl implements CommunityService {
   }
 
   @Override
-  public String leftCommunity(Long userId, Long communityId) {
-    return "TODO UUuuuuuuuuuuuuuuuu";
+  public String makeCommunityPrivate(Long communityId) {
+    return "La comunidad se actualizo a privado exitosamente";
   }
 }

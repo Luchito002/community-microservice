@@ -3,7 +3,9 @@ package com.zectia.communities_microservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zectia.communities_microservice.dto.UserCommunityDto;
@@ -22,5 +24,15 @@ public class UserCommunityController {
   @PostMapping("unir")
   public UserCommunityDto joinCommunity(UserCommunityDto userCommunityDto) {
     return this.userCommunityService.joinCommunity(userCommunityDto);
+  }
+
+  @PutMapping("salir")
+  public String leaveCommunity(@RequestParam Long userId, @RequestParam Long communityId) {
+    return this.userCommunityService.leaveCommunity(userId, communityId);
+  }
+
+  @PutMapping("banear")
+  public String banUserFromCommunity(@RequestParam Long userId, @RequestParam Long communityId) {
+    return this.userCommunityService.banUserFromCommunity(userId, communityId);
   }
 }

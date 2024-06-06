@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,4 +40,8 @@ public class CommunityController {
     return this.communityService.getCommunitiesByUserId(id);
   }
 
+  @PutMapping("cambiar-comunidad-a-privado/{communityId}")
+  public String makeCommunityPrivate(@PathVariable Long communityId) {
+    return this.communityService.makeCommunityPrivate(communityId);
+  }
 }

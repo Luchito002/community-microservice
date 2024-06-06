@@ -25,7 +25,7 @@ public class UserCommunity {
     private Community comunidad;
 
     @Column(name = "estado", nullable = false, length = 15)
-    private String estado;
+    private String estado = "activo";
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "roles_comunidad_id", nullable = false)
