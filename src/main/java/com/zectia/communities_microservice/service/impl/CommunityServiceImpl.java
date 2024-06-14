@@ -30,12 +30,11 @@ public class CommunityServiceImpl implements CommunityService {
 
   @Override
   public String createCommunity(CommunityDto communityDto) {
-    Community community = DtoEntityConverter.dtoToEntity(communityDto, Community.class);
-    if (communityRepository.existsByNombre(community.getNombre())) {
-      return "Ya existe una comunidad con ese nombre";
-    }
-    this.communityRepository.save(community);
-    return "Comunidad creada con exito";
+    Community newCommunity = DtoEntityConverter.dtoToEntity(communityDto, Community.class);
+
+    communityRepository.save(newCommunity);
+
+    return "Se ha creado la comunidad exitosamente";
   }
 
   @Override
