@@ -8,6 +8,10 @@ import com.zectia.communities_microservice.model.Community;
 public interface CommunityService {
   String createCommunity(CommunityDto communityDto);
 
+  String disableCommunity(Long communityId);
+
+  String enableCommunity(Long communityId);
+
   List<Community> getCommunities();
 
   List<CommunityDto> getCommunitiesByUserId(Long userId);

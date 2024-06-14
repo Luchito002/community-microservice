@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,7 +29,6 @@ public class CommunityController {
     return this.communityService.createCommunity(communityDto);
   }
 
-
   @GetMapping("obtener-comunidades")
   public List<Community> getCommunities() {
     return this.communityService.getCommunities();
@@ -37,5 +37,15 @@ public class CommunityController {
   @GetMapping("obtener-comunidades-por-usuario-id/{id}")
   public List<CommunityDto> getCommunitiesByUserId(@PathVariable Long id) {
     return this.communityService.getCommunitiesByUserId(id);
+  }
+
+  @PutMapping("desactivar-comunidad/{comunidadId}")
+  public String disableCommunity(@PathVariable Long comunidadId) {
+    return this.communityService.disableCommunity(comunidadId);
+  }
+
+  @PutMapping("activar-comunidad/{comunidadId}")
+  public String enableCommunity(@PathVariable Long comunidadId) {
+    return this.communityService.enableCommunity(comunidadId);
   }
 }

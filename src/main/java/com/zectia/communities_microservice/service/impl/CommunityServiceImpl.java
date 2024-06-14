@@ -60,4 +60,34 @@ public class CommunityServiceImpl implements CommunityService {
         .map(CommunityDto::new)
         .collect(Collectors.toList());
   }
+
+  @Override
+  public String disableCommunity(Long communityId) {
+    Community community = communityRepository.findById(communityId).orElse(null);
+
+    if (community == null) {
+      return "No existe esa comunidad";
+    }
+
+    community.setEstado(false);
+
+    communityRepository.save(community);
+
+    return "Se desactivó la comunidad exitosamente";
+  }
+
+  @Override
+  public String enableCommunity(Long communityId) {
+    Community community = communityRepository.findById(communityId).orElse(null);
+
+    if (community == null) {
+      return "No existe esa comunidad";
+    }
+
+    community.setEstado(true);
+
+    communityRepository.save(community);
+
+    return "Se activó la comunidad exitosamente";
+  }
 }
